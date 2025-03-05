@@ -1,25 +1,19 @@
-import { multiply } from '@logicwind/react-native-status-bar-height';
-import { Text, View, StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react';
+import { Text, View } from 'react-native';
+import { fetchStatusBarHeight } from '@logicwind/react-native-status-bar-height';
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
+  const [height, setHeight] = useState<number>(0);
 
   useEffect(() => {
-    multiply(3, 7).then(setResult);
+    fetchStatusBarHeight().then((statusBarHeight) => {
+      setHeight(statusBarHeight);
+    });
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
+    <View style={{ marginTop: height }}>
+      <Text>Status Bar Height: {height}</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

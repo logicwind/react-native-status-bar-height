@@ -1,4 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
+import { Dimensions, NativeModules, Platform, StatusBar } from 'react-native';
 
 const LINKING_ERROR =
   `The package '@logicwind/react-native-status-bar-height' doesn't seem to be linked. Make sure: \n\n` +
@@ -17,6 +17,39 @@ const ReactNativeStatusBarHeight = NativeModules.ReactNativeStatusBarHeight
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return ReactNativeStatusBarHeight.multiply(a, b);
-}
+// Constants for iPhone status bar heights
+const STATUSBAR_DEFAULT_HEIGHT = 20;
+const STATUSBAR_X_HEIGHT = 44;
+const STATUSBAR_IP12_HEIGHT = 47;
+const STATUSBAR_IP14PRO_HEIGHT = 49;
+
+const { height: W_HEIGHT, width: W_WIDTH } = Dimensions.get('window');
+
+const getFallbackStatusBarHeight = (): number => {
+  // iPhone X, XS, 11 Pro
+  if (W_WIDTH === 375 && W_HEIGHT === 812) return STATUSBAR_X_HEIGHT;
+  // iPhone XS Max, XR, 11, 11 Pro Max
+  if (W_WIDTH === 414 && W_HEIGHT === 896) return STATUSBAR_X_HEIGHT;
+  // iPhone 12, 12 Pro, 13, 13 Pro
+  if (W_WIDTH === 390 && W_HEIGHT === 844) return STATUSBAR_IP12_HEIGHT;
+  // iPhone 12 Pro Max, 13 Pro Max
+  if (W_WIDTH === 428 && W_HEIGHT === 926) return STATUSBAR_IP12_HEIGHT;
+  // iPhone 14 Pro
+  if (W_WIDTH === 393 && W_HEIGHT === 852) return STATUSBAR_IP14PRO_HEIGHT;
+  // iPhone 14 Pro Max
+  if (W_WIDTH === 430 && W_HEIGHT === 932) return STATUSBAR_IP14PRO_HEIGHT;
+
+  return STATUSBAR_DEFAULT_HEIGHT;
+};
+
+export const fetchStatusBarHeight = async (): Promise<number> => {
+  if (Platform.OS === 'ios' && !Platform.isPad && !Platform.isTV) {
+    try {
+      return await ReactNativeStatusBarHeight.getStatusBarHeight();
+    } catch {
+      return getFallbackStatusBarHeight();
+    }
+  }
+
+  return StatusBar.currentHeight ?? 0;
+};
