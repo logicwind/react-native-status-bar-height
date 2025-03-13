@@ -58,7 +58,11 @@ const getFallbackStatusBarHeight = (): number => {
 export const fetchStatusBarHeight = (): number => {
   if (Platform.OS === 'ios' && !Platform.isTV) {
     try {
-      return ReactNativeStatusBarHeight.STATUS_BAR_HEIGHT;
+      if (ReactNativeStatusBarHeight.STATUS_BAR_HEIGHT !== 0) {
+        return ReactNativeStatusBarHeight.STATUS_BAR_HEIGHT;
+      }
+
+      return getFallbackStatusBarHeight();
     } catch {
       return getFallbackStatusBarHeight();
     }
