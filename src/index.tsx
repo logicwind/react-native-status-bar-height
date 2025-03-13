@@ -55,10 +55,10 @@ const getFallbackStatusBarHeight = (): number => {
   return STATUSBAR_DEFAULT_HEIGHT;
 };
 
-export const fetchStatusBarHeight = async (): Promise<number> => {
+export const fetchStatusBarHeight = (): number => {
   if (Platform.OS === 'ios' && !Platform.isTV) {
     try {
-      return await ReactNativeStatusBarHeight.getStatusBarHeight();
+      return ReactNativeStatusBarHeight.STATUS_BAR_HEIGHT;
     } catch {
       return getFallbackStatusBarHeight();
     }
