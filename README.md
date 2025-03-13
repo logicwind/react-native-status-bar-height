@@ -35,14 +35,7 @@ Import and use the `fetchStatusBarHeight` function to get the status bar height.
 ```tsx md title="App.tsx"
 import { fetchStatusBarHeight } from '@logicwind/react-native-status-bar-height';
 
-useEffect(() => {
-  const getStatusBarHeight = async () => {
-    const height = await fetchStatusBarHeight();
-    console.log('Status Bar Height:', height);
-  };
-
-  getStatusBarHeight();
-}, []);
+const statusBarHeight = fetchStatusBarHeight();
 ```
 
 ## How It Works
