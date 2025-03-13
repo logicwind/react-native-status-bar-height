@@ -25,7 +25,6 @@ const STATUSBAR_IP14PRO_HEIGHT = 49;
 const STATUSBAR_IP15_HEIGHT = 50;
 const STATUSBAR_IP16_HEIGHT = 52;
 const STATUSBAR_IPAD_HEIGHT = 24;
-const STATUSBAR_IP16E_HEIGHT = 50;
 
 const { height: W_HEIGHT, width: W_WIDTH } = Dimensions.get('window');
 
@@ -50,8 +49,6 @@ const getFallbackStatusBarHeight = (): number => {
   if (W_WIDTH === 396 && W_HEIGHT === 860) return STATUSBAR_IP16_HEIGHT;
   // iPhone 16 Pro Max
   if (W_WIDTH === 432 && W_HEIGHT === 940) return STATUSBAR_IP16_HEIGHT;
-  // iPhone 16e (Assumed)
-  if (W_WIDTH === 398 && W_HEIGHT === 864) return STATUSBAR_IP16E_HEIGHT;
   // iPads (general fallback)
   if (Platform.OS === 'ios' && Platform.isPad) return STATUSBAR_IPAD_HEIGHT;
 
