@@ -13,10 +13,13 @@ jobs:
       - name: 🟢 node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.18.1
+          node-version: 20.x
+          cache: 'npm'
       - name: Install Dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: 🚀 publish
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v2
+        with:
+          access: public
         with:
           token: ${{secrets.NPM_AUTH_TOKEN}}
