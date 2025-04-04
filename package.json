@@ -48,13 +48,20 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "status-bar",
+    "status-bar-height",
+    "react-native-status-bar-height",
+    "react-native-status-bar",
+    "react-native-status-bar-height-ios",
+    "react-native-status-bar-height-android",
+    "react-native-status-bar-height-ios-android"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/logicwind/react-native-status-bar-height.git"
   },
-  "author": "Logicwind <devtools@logicwind.com> (https://github.com/devtools-logicwind)",
+  "author": "Logicwind (https://github.com/devtools-logicwind)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/logicwind/react-native-status-bar-height/issues"
