@@ -70,3 +70,11 @@ export const fetchStatusBarHeight = (): number => {
 
   return StatusBar.currentHeight ?? 0;
 };
+
+export const fetchBottomInset = (): number => {
+  try {
+    return ReactNativeStatusBarHeight.BOTTOM_SAFE_AREA;
+  } catch {
+    return 0;
+  }
+};
