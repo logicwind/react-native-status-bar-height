@@ -1,3 +1,8 @@
+## 0.2.0
+
+- Added support for fetching **bottom safe area inset** using native modules.
+- Improved example layout for better visual clarity and margin usage.
+
 ## 0.1.0
 
 - Fetch status bar height on **iOS** using native modules.

@@ -1,6 +1,6 @@
 # @logicwind/react-native-status-bar-height
 
-A simple and lightweight React Native package to get the height of the status bar on both Android and iOS.
+A simple and lightweight React Native package to get the **status bar height** and **bottom safe area inset** on both Android and iOS.
 
 ### Installation
 
@@ -30,18 +30,43 @@ No additional setup is required.
 
 ## Usage
 
-Import and use the `fetchStatusBarHeight` function to get the status bar height.
+Import and use the utility functions to fetch values:
 
 ```tsx md title="App.tsx"
-import { fetchStatusBarHeight } from '@logicwind/react-native-status-bar-height';
+import {
+  fetchStatusBarHeight,
+  fetchBottonInset,
+} from '@logicwind/react-native-status-bar-height';
 
 const statusBarHeight = fetchStatusBarHeight();
+const bottomInset = fetchBottonInset();
 ```
+
+## Example
+```tsx md title="App.tsx"
+<View style={{ flex: 1 }}>
+  <Text style={{ marginTop: fetchStatusBarHeight() }}>
+    Status Bar Height
+  </Text>
+  <View style={{ flex: 1 }} />
+  <Text style={{ marginBottom: fetchBottonInset() }}>
+    Bottom Safe Area
+  </Text>
+</View>
+```
+
+## API
+`fetchStatusBarHeight(): number` - Returns the status bar height in pixels.
+
+`fetchBottomInset(): number` - Returns the bottom safe area inset in pixels, helpful for avoiding overlap with gesture/navigation bars.
 
 ## How It Works
 
-- On **iOS**, it attempts to fetch the status bar height using native modules. If unavailable, it falls back to predefined values based on screen dimensions.
-- On **Android**, it retrieves `StatusBar.currentHeight`.
+- On iOS, it retrieves values using native APIs or falls back to common values.
+
+- On Android, it uses StatusBar.currentHeight for the status bar height, and WindowInsets for the bottom inset when available.
+
+- A fallback mechanism is in place to provide reasonable defaults.
 
 ## react-native-status-bar-height is crafted mindfully at [Logicwind](https://www.logicwind.com?utm_source=github&utm_medium=github.com-logicwind&utm_campaign=react-native-status-bar-height)
 
