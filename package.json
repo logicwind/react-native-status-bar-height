@@ -1,6 +1,6 @@
 {
   "name": "@logicwind/react-native-status-bar-height",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A React Native library for retrieving the status bar height on both Android and iOS.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
