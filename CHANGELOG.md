@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Updated UTM source in README.md file
+
 ## 0.2.0
 
 - Added support for fetching **bottom safe area inset** using native modules.
