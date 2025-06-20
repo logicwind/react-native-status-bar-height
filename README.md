@@ -43,11 +43,11 @@ Import and use the utility functions to fetch values:
 ```tsx md title="App.tsx"
 import {
   fetchStatusBarHeight,
-  fetchBottonInset,
+  fetchBottomInset,
 } from '@logicwind/react-native-status-bar-height';
 
 const statusBarHeight = fetchStatusBarHeight();
-const bottomInset = fetchBottonInset();
+const bottomInset = fetchBottomInset();
 ```
 
 ## Example
@@ -57,7 +57,7 @@ const bottomInset = fetchBottonInset();
     Status Bar Height
   </Text>
   <View style={{ flex: 1 }} />
-  <Text style={{ marginBottom: fetchBottonInset() }}>
+  <Text style={{ marginBottom: fetchBottomInset() }}>
     Bottom Safe Area
   </Text>
 </View>
