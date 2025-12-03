@@ -1,3 +1,7 @@
+## 0.2.2
+
+- Replace currentActivity reference with getCurrentActivity()
+
 ## 0.2.1
 
 - Updated UTM source in README.md file

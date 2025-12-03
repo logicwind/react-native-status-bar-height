@@ -16,7 +16,7 @@ class ReactNativeStatusBarHeightModule(reactContext: ReactApplicationContext) :
   override fun getConstants(): Map<String, Any> {
     val constants = mutableMapOf<String, Any>()
 
-    val activity: Activity? = currentActivity
+    val activity: Activity? = getCurrentActivity()
     var bottomInset = 0
 
     if (activity != null) {
